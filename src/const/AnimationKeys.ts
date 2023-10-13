@@ -5,7 +5,7 @@ enum AnimationKeys {
   CharacterFall = "character-fall",
   CharacterJump = "character-jump",
   CharacterIdle = "character-idle",
-
+  WaterReflect = "water-reflect",
   TurtleFlying = "turtle-flying"
 }
 

@@ -1,24 +1,23 @@
 import * as Phaser from "phaser";
 import Preloader from "./scenes/Preloader";
+import GameScene from "./scenes/GameScene";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   pixelArt: true,
-  width: 384,
-  height: 600,
+  width: 400,
+  height: 640,
   audio: {
     disableWebAudio: true,
   },
   physics: {
-    default: "matter",
-    matter: {
-      // debug: true,
-      gravity: {
-        y: 5,
-      },
+    default: "arcade",
+    arcade: {
+      gravity: { y: 200 },
+      debug: true,
     },
   },
-  scene: [Preloader],
+  scene: [Preloader, GameScene],
 };
 
 export default new Phaser.Game(config);
