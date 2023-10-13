@@ -1,31 +1,36 @@
 {
-  "name": "phaser3-webpack-template",
-  "version": "1.0.0",
-  "description": "Phaser 3 project template for Phaser Editor 2D v3",
-  "main": "webpack.config.js",
-  "scripts": {
-    "start": "webpack serve --mode=development --stats-error-details --node-env development",
-    "build": "webpack --mode=production --node-env production && phaser-asset-pack-hashing -r dist",
-    "editor": "phasereditor2d-launcher -project . -port 1959 -max-number-files 9999",
-    "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Phaser Editor 2D <developers@phasereditor2d.com> (https://phasereditor2d.com/)",
-  "license": "MIT",
-  "dependencies": {
-    "phaser": "^3.60.0"
-  },
-  "devDependencies": {
-    "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^8.1.0",
-    "html-webpack-plugin": "^5.3.1",
-    "phaser-asset-pack-hashing": "^1.0.5",
-    "phasereditor2d-launcher": "^3.63.0",
-    "ts-loader": "^9.4.2",
-    "typescript": "^5.0.4",
-    "webpack": "^5.28.0",
-    "webpack-clean-plugin": "^0.2.3",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.4.0"
-  }
+    "name": "phaser3-typescript-project-template",
+    "version": "1.2.0",
+    "description": "A Phaser 3 Project Template using Rollup and TypeScript",
+    "main": "src/game.ts",
+    "scripts": {
+        "dev": "rollup --config rollup.config.dev.mjs",
+        "build": "rollup --config rollup.config.dist.mjs",
+        "watch": "rollup --watch --config rollup.config.dev.mjs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/photonstorm/phaser3-typescript-project-template.git"
+    },
+    "author": "Hoando",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/photonstorm/phaser3-typescript-project-template/issues"
+    },
+    "homepage": "https://github.com/photonstorm/phaser3-typescript-project-template#readme",
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^24.0.1",
+        "@rollup/plugin-node-resolve": "^15.0.2",
+        "@rollup/plugin-replace": "^5.0.2",
+        "@rollup/plugin-terser": "^0.4.0",
+        "@rollup/plugin-typescript": "^11.1.0",
+        "phaser": "^3.60.0",
+        "rollup": "^3.20.2",
+        "rollup-plugin-serve": "^2.0.2",
+        "tslib": "^2.6.2",
+        "typescript": "^5.0.3"
+    },
+    "dependencies": {
+        "matter-js": "^0.19.0"
+    }
 }
