@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="20" height="25" tilewidth="32" tileheight="32" infinite="0" nextlayerid="17" nextobjectid="1">
+ <editorsettings>
+  <export target="map-00.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="additional-sky" tilewidth="32" tileheight="32" tilecount="1" columns="1">
+  <image source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Background/Additional Sky.png" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="2" name="terrain-00" tilewidth="32" tileheight="32" tilecount="85" columns="17">
+  <image source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Terrain/Terrain (32x32).png" width="544" height="160"/>
+  <wangsets>
+   <wangset name="ground" type="corner" tile="-1">
+    <wangcolor name="" color="#ff0000" tile="7" probability="1"/>
+    <wangtile tileid="0" wangid="0,0,0,1,0,0,0,0"/>
+    <wangtile tileid="1" wangid="0,0,0,1,0,1,0,0"/>
+    <wangtile tileid="2" wangid="0,0,0,0,0,1,0,0"/>
+    <wangtile tileid="6" wangid="0,1,0,0,0,1,0,1"/>
+    <wangtile tileid="7" wangid="0,1,0,1,0,0,0,1"/>
+    <wangtile tileid="17" wangid="0,1,0,1,0,0,0,0"/>
+    <wangtile tileid="18" wangid="0,1,0,1,0,1,0,1"/>
+    <wangtile tileid="19" wangid="0,0,0,0,0,1,0,1"/>
+    <wangtile tileid="23" wangid="0,0,0,1,0,1,0,1"/>
+    <wangtile tileid="24" wangid="0,1,0,1,0,1,0,0"/>
+    <wangtile tileid="34" wangid="0,1,0,0,0,0,0,0"/>
+    <wangtile tileid="35" wangid="0,1,0,0,0,0,0,1"/>
+    <wangtile tileid="36" wangid="0,0,0,0,0,0,0,1"/>
+    <wangtile tileid="57" wangid="0,1,0,0,0,0,0,0"/>
+    <wangtile tileid="58" wangid="0,0,0,0,0,0,0,1"/>
+    <wangtile tileid="74" wangid="0,0,0,1,0,0,0,0"/>
+    <wangtile tileid="75" wangid="0,0,0,0,0,1,0,0"/>
+   </wangset>
+  </wangsets>
+ </tileset>
+ <tileset firstgid="87" name="beach" tilewidth="32" tileheight="32" tilecount="48" columns="12">
+  <image source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Background/BG Image.png" width="384" height="128"/>
+ </tileset>
+ <tileset firstgid="135" name="big-water-reflect" tilewidth="170" tileheight="10" tilecount="4" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="170" height="10" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Background/Water Reflect Big 01.png"/>
+   <animation>
+    <frame tileid="0" duration="100"/>
+    <frame tileid="1" duration="100"/>
+    <frame tileid="2" duration="100"/>
+    <frame tileid="3" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1">
+   <image width="170" height="10" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Background/Water Reflect Big 02.png"/>
+  </tile>
+  <tile id="2">
+   <image width="170" height="10" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Background/Water Reflect Big 03.png"/>
+  </tile>
+  <tile id="3">
+   <image width="170" height="10" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Background/Water Reflect Big 04.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="139" name="cheat" tilewidth="64" tileheight="35" tilecount="20" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 01.png"/>
+   <animation>
+    <frame tileid="0" duration="100"/>
+    <frame tileid="1" duration="100"/>
+    <frame tileid="2" duration="100"/>
+    <frame tileid="3" duration="100"/>
+    <frame tileid="4" duration="100"/>
+    <frame tileid="5" duration="100"/>
+    <frame tileid="6" duration="100"/>
+    <frame tileid="7" duration="100"/>
+    <frame tileid="8" duration="100"/>
+    <frame tileid="9" duration="100"/>
+    <frame tileid="10" duration="100"/>
+    <frame tileid="11" duration="100"/>
+    <frame tileid="12" duration="100"/>
+    <frame tileid="13" duration="100"/>
+    <frame tileid="14" duration="100"/>
+    <frame tileid="15" duration="100"/>
+    <frame tileid="16" duration="100"/>
+    <frame tileid="17" duration="100"/>
+    <frame tileid="18" duration="100"/>
+    <frame tileid="19" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 02.png"/>
+  </tile>
+  <tile id="2">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 03.png"/>
+  </tile>
+  <tile id="3">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 04.png"/>
+  </tile>
+  <tile id="4">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 05.png"/>
+  </tile>
+  <tile id="5">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 06.png"/>
+  </tile>
+  <tile id="6">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 07.png"/>
+  </tile>
+  <tile id="7">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 08.png"/>
+  </tile>
+  <tile id="8">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 09.png"/>
+  </tile>
+  <tile id="9">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Close 10.png"/>
+  </tile>
+  <tile id="10">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 01.png"/>
+  </tile>
+  <tile id="11">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 02.png"/>
+  </tile>
+  <tile id="12">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 03.png"/>
+  </tile>
+  <tile id="13">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 04.png"/>
+  </tile>
+  <tile id="14">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 05.png"/>
+  </tile>
+  <tile id="15">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 06.png"/>
+  </tile>
+  <tile id="16">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 07.png"/>
+  </tile>
+  <tile id="17">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 08.png"/>
+  </tile>
+  <tile id="18">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 09.png"/>
+  </tile>
+  <tile id="19">
+   <image width="64" height="35" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Chest/Chest Open 10.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="159" name="flag" tilewidth="34" tileheight="93" tilecount="10" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="34" height="93" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 01.png"/>
+   <animation>
+    <frame tileid="0" duration="100"/>
+    <frame tileid="1" duration="100"/>
+    <frame tileid="2" duration="100"/>
+    <frame tileid="3" duration="100"/>
+    <frame tileid="4" duration="100"/>
+    <frame tileid="5" duration="100"/>
+    <frame tileid="6" duration="100"/>
+    <frame tileid="7" duration="100"/>
+    <frame tileid="8" duration="100"/>
+   </animation>
+  </tile>
+  <tile id="1">
+   <image width="34" height="93" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 02.png"/>
+  </tile>
+  <tile id="2">
+   <image width="34" height="93" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 03.png"/>
+  </tile>
+  <tile id="3">
+   <image width="34" height="93" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 04.png"/>
+  </tile>
+  <tile id="4">
+   <image width="34" height="93" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 05.png"/>
+  </tile>
+  <tile id="5">
+   <image width="34" height="93" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 06.png"/>
+  </tile>
+  <tile id="6">
+   <image width="34" height="93" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 07.png"/>
+  </tile>
+  <tile id="7">
+   <image width="34" height="93" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 08.png"/>
+  </tile>
+  <tile id="8">
+   <image width="34" height="93" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Flag 09.png"/>
+  </tile>
+  <tile id="9">
+   <image width="30" height="16" source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag/Platform.png"/>
+  </tile>
+ </tileset>
+ <layer id="2" name="background" width="20" height="25">
+  <data encoding="csv">
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+</data>
+ </layer>
+ <layer id="3" name="ground" width="20" height="25">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,
+20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20,20
+</data>
+ </layer>
+ <layer id="6" name="beach" width="20" height="25">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+87,88,89,90,91,92,93,94,95,96,87,88,89,90,91,92,93,94,95,96,
+99,100,101,102,103,104,105,106,107,108,99,100,101,102,103,104,105,106,107,108,
+111,112,113,114,115,116,117,118,119,120,111,112,113,114,115,116,117,118,119,120,
+123,124,125,126,127,128,129,130,131,132,123,124,125,126,127,128,129,130,131,132,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <group id="11" name="sky">
+  <imagelayer id="5" name="sky" offsetx="67.8081" offsety="337.101" repeatx="1">
+   <image source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Background/Big Clouds.png" width="448" height="101"/>
+  </imagelayer>
+  <imagelayer id="9" name="small-sky" offsetx="318.667" offsety="264">
+   <image source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Background/Small Cloud 3.png" width="140" height="39"/>
+  </imagelayer>
+  <imagelayer id="10" name="medium-sky" offsetx="497.333" offsety="216">
+   <image source="../environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Background/Small Cloud 1.png" width="74" height="24"/>
+  </imagelayer>
+ </group>
+ <layer id="12" name="water-reflect" width="20" height="25" offsetx="0" offsety="7">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,135,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="13" name="cheat" width="20" height="25">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,139,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <group id="16" name="flag" offsetx="-9.5" offsety="0.5">
+  <layer id="14" name="flag" width="20" height="25" offsetx="13" offsety="16">
+   <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,159,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+  </layer>
+  <layer id="15" name="sup-flag" width="20" height="25">
+   <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,168,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+  </layer>
+ </group>
+</map>

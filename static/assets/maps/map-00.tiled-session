@@ -1,0 +1,66 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "map-00.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInEditor": 1
+        },
+        "map-00.tmx": {
+            "expandedGroupLayers": [
+                16
+            ],
+            "scale": 1,
+            "selectedLayer": 11,
+            "viewCenter": {
+                "x": 326.5,
+                "y": 392
+            }
+        },
+        "map-00.tmx#additional-sky": {
+            "scaleInDock": 1
+        },
+        "map-00.tmx#beach": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1
+        },
+        "map-00.tmx#big-water-reflect": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map-00.tmx#cheat": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "map-00.tmx#flag": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "map-00.tmx#terrain-00": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "/Users/hoando/project/king-of-anonymity/static/assets/maps",
+    "last.imagePath": "/Users/hoando/project/king-of-anonymity/static/assets/environments/maps/Treasure Hunters/Palm Tree Island/Sprites/Objects/Flag",
+    "map.height": 25,
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 20,
+    "openFiles": [
+        "map-00.tmx"
+    ],
+    "project": "map-00.tiled-project",
+    "recentFiles": [
+        "map-00.tmx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.type": 1
+}

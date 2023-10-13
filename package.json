@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve --mode=development --stats-error-details --node-env development",
     "build": "webpack --mode=production --node-env production && phaser-asset-pack-hashing -r dist",
-    "editor": "phasereditor2d-launcher -project . -port 1959",
+    "editor": "phasereditor2d-launcher -project . -port 1959 -max-number-files 9999",
     "editor-remote": "phasereditor2d-launcher -project . -disable-open-browser -public -port 1959",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,7 +20,7 @@
     "copy-webpack-plugin": "^8.1.0",
     "html-webpack-plugin": "^5.3.1",
     "phaser-asset-pack-hashing": "^1.0.5",
-    "phasereditor2d-launcher": "^3.32.0",
+    "phasereditor2d-launcher": "^3.63.0",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
     "webpack": "^5.28.0",
