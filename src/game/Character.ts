@@ -15,35 +15,14 @@ export default class Character extends Phaser.GameObjects.Sprite {
 
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 
-  private canPressSpace: boolean = false;
-  private spaceCooldown: number = 100;
-
-  constructor(
-    scene: Phaser.Scene,
-    x: number,
-    y: number,
-    width: number,
-    height: number,
-    characterRatio: number
-  ) {
+  constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y, TextureKeys.Character);
-
-    this.setScale(characterRatio);
 
     this.createAnimations();
 
-    scene.matter.add.gameObject(this, {
-      mass: 2,
-      frictionAir: 0.05,
-      restitution: 0.1,
-      friction: 0.3,
-      label: "character",
-      shape: {
-        type: "rectangle",
-        width: width - 15, // 'cause character have a item at back, so we should sub with 15
-        height: height,
-      },
-    });
+    this.play(AnimationKeys.CharacterIdle);
+    
+    this.scene.physics.add.existing(this);
 
     this.cursors = scene.input.keyboard.createCursorKeys();
     scene.add.existing(this);
@@ -72,74 +51,17 @@ export default class Character extends Phaser.GameObjects.Sprite {
     }
   }
 
-  private handleInput() {
-    if (
-      Phaser.Input.Keyboard.JustDown(this.cursors.space) &&
-      !this.canPressSpace
-    ) {
-      if (
-        this.charaterState !== CharacterState.Jump &&
-        this.charaterState !== CharacterState.Fall
-      ) {
-        this.charaterState = CharacterState.Jump;
-        const body = this.body as BodyType;
-        this.scene.matter.setVelocityY(body, -25);
+  private handleInput() {}
 
-        setTimeout(() => {
-          this.canPressSpace = false;
-        }, this.spaceCooldown);
-
-        this.canPressSpace = true;
-      }
-    }
-
-    if (Phaser.Input.Keyboard.JustDown(this.cursors.right)) {
-      this.setFlip(false, false);
-      this.scene.matter.setVelocityX(this.body as BodyType, 8);
-    }
-
-    if (Phaser.Input.Keyboard.JustDown(this.cursors.left)) {
-      this.setFlip(true, false);
-      this.scene.matter.setVelocityX(this.body as BodyType, -8);
-    }
-  }
-
-  protected preUpdate(time: number, delta: number): void {
-    super.preUpdate(time, delta);
-
-    // handle press event
-    this.handleInput();
-
-    this.scene.matter.setAngularVelocity(this.body as BodyType, 0);
-
-    // check character is falling
-    // if (
-    //   this.body.velocity.y > 0 &&
-    //   this.charaterState === CharacterState.Jump
-    // ) {
-    //   this.charaterState = CharacterState.Fall;
-    // }
-
-    // Check the state of game and then transform
-    switch (this.charaterState) {
-      case CharacterState.Jump:
-        this.play(AnimationKeys.CharacterJump, true);
-        break;
-      case CharacterState.Fall:
-        this.play(AnimationKeys.CharacterFall, true);
-        break;
-      case CharacterState.Dead:
-        break;
-    }
-  }
+  protected preUpdate(time: number, delta: number): void {}
 
   private createAnimations() {
     this.anims.create({
       key: AnimationKeys.CharacterIdle,
       frames: this.anims.generateFrameNames(TextureKeys.Character, {
-        start: 1,
-        end: 26,
-        prefix: "idle-",
+        start: 0,
+        end: 3,
+        prefix: "Owlet_Monster_Idle_4-",
         suffix: ".png",
       }),
       frameRate: 10,
@@ -147,22 +69,43 @@ export default class Character extends Phaser.GameObjects.Sprite {
     });
 
     this.anims.create({
-      key: AnimationKeys.CharacterJump,
+      key: AnimationKeys.CharacterAttack1,
       frames: this.anims.generateFrameNames(TextureKeys.Character, {
-        start: 1,
-        end: 4,
-        prefix: "jump-",
+        start: 0,
+        end: 3,
+        prefix: "Owlet_Monster_Attack1_4-",
         suffix: ".png",
       }),
       frameRate: 10,
     });
 
     this.anims.create({
-      key: AnimationKeys.CharacterFall,
+      key: AnimationKeys.CharacterAttack2,
       frames: this.anims.generateFrameNames(TextureKeys.Character, {
-        start: 1,
-        end: 2,
-        prefix: "door-in-",
+        start: 0,
+        end: 5,
+        prefix: "Owlet_Monster_Attack2_6-",
+        suffix: ".png",
+      }),
+      frameRate: 10,
+    });
+
+    this.anims.create({
+      key: AnimationKeys.CharacterDeath,
+      frames: this.anims.generateFrameNames(TextureKeys.Character, {
+        start: 0,
+        end: 7,
+        prefix: "Owlet_Monster_Death_8-",
+        suffix: ".png",
+      }),
+      frameRate: 10,
+    });
+    this.anims.create({
+      key: AnimationKeys.CharacterHurt,
+      frames: this.anims.generateFrameNames(TextureKeys.Character, {
+        start: 0,
+        end: 3,
+        prefix: "Owlet_Monster_Hurt_4-",
         suffix: ".png",
       }),
       frameRate: 10,

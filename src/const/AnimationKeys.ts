@@ -1,12 +1,14 @@
 enum AnimationKeys {
-  TurtleRun = "turtle-run",
-  TurtleDead = "turtle-dead",
 
-  CharacterFall = "character-fall",
-  CharacterJump = "character-jump",
-  CharacterIdle = "character-idle",
   WaterReflect = "water-reflect",
-  TurtleFlying = "turtle-flying"
+
+  CharacterHurt = "character-hurt",
+  CharacterIdle = "character-idle",
+  CharacterAttack1 = "character-attack-1",
+  CharacterAttack2 = "character-attack-2",
+  CharacterDeath = "character-death",
+  
+
 }
 
 export default AnimationKeys;

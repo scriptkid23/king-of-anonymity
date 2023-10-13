@@ -9,6 +9,7 @@ import {
 } from "../const/TileLayerKeys";
 import WaterReflect from "../game/WaterReflect";
 import TextureKeys from "../const/TextureKeys";
+import Character from "../game/Character";
 
 export default class GameScene extends Phaser.Scene {
   private bigClouds: Phaser.GameObjects.TileSprite;
@@ -33,7 +34,9 @@ export default class GameScene extends Phaser.Scene {
 
     this.bigClouds = this.add.tileSprite(width / 2,height / 2 + 3, width, 101, TextureKeys.BigClouds);
     
+    new Character(this, width / 2, height / 2);
     this.cameras.main.setBounds(0, 0, width, height);
+    this.physics.world.setBounds(0, 0, width, height);
   }
 
   private loadMap(map: Phaser.Tilemaps.Tilemap, types: TileLayerKeysType[]) {
@@ -43,6 +46,7 @@ export default class GameScene extends Phaser.Scene {
 
       if (type.layer === TileLayerName.Ground) {
         layer.setCollisionByProperty({ collides: true });
+        
 
         // active debug for tiled
         // const debugGraphics = this.add.graphics().setAlpha(0.7);
