@@ -13,6 +13,8 @@ import Character from "../game/Character";
 
 export default class GameScene extends Phaser.Scene {
   private bigClouds: Phaser.GameObjects.TileSprite;
+  private ground: Phaser.Tilemaps.TilemapLayer;
+
 
   constructor() {
     super(SceneKeys.Game);
@@ -34,9 +36,11 @@ export default class GameScene extends Phaser.Scene {
 
     this.bigClouds = this.add.tileSprite(width / 2,height / 2 + 3, width, 101, TextureKeys.BigClouds);
     
-    new Character(this, width / 2, height / 2);
+    const character = new Character(this, width / 2, height / 2).idle();
     this.cameras.main.setBounds(0, 0, width, height);
     this.physics.world.setBounds(0, 0, width, height);
+    this.physics.add.collider(character, this.ground);
+
   }
 
   private loadMap(map: Phaser.Tilemaps.Tilemap, types: TileLayerKeysType[]) {
@@ -46,7 +50,7 @@ export default class GameScene extends Phaser.Scene {
 
       if (type.layer === TileLayerName.Ground) {
         layer.setCollisionByProperty({ collides: true });
-        
+        this.ground = layer;
 
         // active debug for tiled
         // const debugGraphics = this.add.graphics().setAlpha(0.7);

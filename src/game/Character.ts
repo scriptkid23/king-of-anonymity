@@ -20,11 +20,8 @@ export default class Character extends Phaser.GameObjects.Sprite {
 
     this.createAnimations();
 
-    this.play(AnimationKeys.CharacterIdle);
-    
-    this.scene.physics.add.existing(this);
-
     this.cursors = scene.input.keyboard.createCursorKeys();
+    this.scene.physics.add.existing(this);
     scene.add.existing(this);
   }
 
@@ -39,6 +36,7 @@ export default class Character extends Phaser.GameObjects.Sprite {
   idle() {
     this.play(AnimationKeys.CharacterIdle, true);
     this.charaterState = CharacterState.Idle;
+    return this;
   }
 
   jump(flag: boolean) {
@@ -53,7 +51,7 @@ export default class Character extends Phaser.GameObjects.Sprite {
 
   private handleInput() {}
 
-  protected preUpdate(time: number, delta: number): void {}
+  // protected preUpdate(time: number, delta: number): void {}
 
   private createAnimations() {
     this.anims.create({
