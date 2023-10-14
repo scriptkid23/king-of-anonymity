@@ -5,7 +5,8 @@ enum TextureKeys {
   UpButton = 'Top Button',
   DownButton = "Down Button",
   LeftButton = "Left Button",
-  RightButton = "Right Button"
+  RightButton = "Right Button",
+  Skill = "Skill",
 }
 
 export default TextureKeys;

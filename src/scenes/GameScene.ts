@@ -9,13 +9,14 @@ import {
 } from "../const/TileLayerKeys";
 import WaterReflect from "../game/WaterReflect";
 import TextureKeys from "../const/TextureKeys";
-import Character from "../game/Character";
 import DownButton from "../game/Button/Down";
 import LeftButton from "../game/Button/Left";
 import Challenge from "../game/Challenge/Challenge";
 import { EventKeys } from "../const/EventKeys";
 import { InstructionKeys } from "../const/InstructionKeys";
 import ChallengeFactory from "../game/Challenge/ChallengeFactory";
+import Character from "../game/Character/Character";
+import Cascader from "../game/Character/Cascader";
 
 export default class GameScene extends Phaser.Scene {
   private bigClouds: Phaser.GameObjects.TileSprite;
@@ -54,14 +55,33 @@ export default class GameScene extends Phaser.Scene {
 
     this.challengeFactory = new ChallengeFactory(this);
 
-    this.character = new Character(this, width / 2, height / 2);
+    this.character = new Character(this, width / 2 - 100, height / 2 + 80);
+
+    let cascader = new Cascader(
+      this,
+      width / 2 + 100,
+      height / 2 + 80
+    ).setFlipX(true);
     this.cameras.main.setBounds(0, 0, width, height);
     this.physics.world.setBounds(0, 0, width, height);
     this.physics.add.collider(this.character, this.ground);
-
+    this.physics.add.collider(cascader, this.ground);
+    this.physics.world.on("collide", this.handleCollision, this);
     this.handleInput();
   }
+  handleCollision(obj1, obj2) {
+    console.log(obj1, obj2);
+    const label1 = obj1.getData("label");
+    const label2 = obj2.getData("label");
 
+    if (label1 === "playerBody") {
+      // Handle collision when obj1 collides with obj2
+      console.log("Player collided with", label2);
+    } else if (label2 === "playerBody") {
+      // Handle collision when obj2 collides with obj1
+      console.log("Something collided with player");
+    }
+  }
   setInstruction = (instruction: number) => {
     this.instruction = instruction;
   };

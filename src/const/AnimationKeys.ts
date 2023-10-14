@@ -8,7 +8,8 @@ enum AnimationKeys {
   CharacterAttack2 = "character-attack-2",
   CharacterDeath = "character-death",
   DestroyButton = "destroy-button",
-
+  SkillStart = "skill-start",
+  SkillEnd = "skill-end",
 }
 
 export default AnimationKeys;

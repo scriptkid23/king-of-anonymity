@@ -1,7 +1,8 @@
 import * as Phaser from "phaser";
-import AnimationKeys from "../const/AnimationKeys";
-import TextureKeys from "../const/TextureKeys";
 import { BodyType } from "matter";
+import TextureKeys from "../../const/TextureKeys";
+import AnimationKeys from "../../const/AnimationKeys";
+import Skill from "./Skill";
 
 export enum CharacterState {
   Idle,
@@ -11,7 +12,7 @@ export enum CharacterState {
   Hurt,
 }
 
-export default class Character extends Phaser.GameObjects.Sprite {
+export default class Cascader extends Phaser.GameObjects.Sprite {
   private charaterState = CharacterState.Idle;
 
   private isHurt = false;
@@ -26,10 +27,13 @@ export default class Character extends Phaser.GameObjects.Sprite {
     this.play(AnimationKeys.CharacterIdle);
 
     this.cursors = scene.input.keyboard.createCursorKeys();
-    this.scene.physics.add.existing(this);
-    scene.add.existing(this);
 
-    this.cursors = scene.input.keyboard.createCursorKeys();
+    this.scene.physics.add.existing(this);
+    this.scene.events.on("hurt", () => {
+      this.charaterState = CharacterState.Hurt;
+    });
+    scene.add.existing(this);
+    this.setData("label", "playerBody");
   }
 
   getCharacterState = () => {
@@ -56,31 +60,43 @@ export default class Character extends Phaser.GameObjects.Sprite {
     const body = this.body as Phaser.Physics.Arcade.Body;
 
     if (this.cursors.right.isDown) {
-      // Xử lý khi phím mũi tên lên được nhấn
     }
     switch (this.charaterState) {
       case CharacterState.Hurt: {
-        if (this.isHurt) {
-          this.play(AnimationKeys.CharacterHurt);
-          this.isHurt = false;
-          this.on('animationcomplete', this.handleAnimationComplete, this);
-        }
+        this.play(AnimationKeys.CharacterDeath);
+        this.charaterState = CharacterState.Idle;
+        this.on("animationcomplete", this.handleAnimationComplete, this);
 
         break;
       }
       case CharacterState.Attack: {
+        this.play(AnimationKeys.CharacterAttack1);
+        this.charaterState = CharacterState.Idle;
+        this.on("animationcomplete", this.handleAnimationComplete, this);
         break;
       }
     }
   }
-  handleAnimationComplete(animation: Phaser.Animations.Animation, frame: Phaser.Animations.AnimationFrame, gameObject: Phaser.GameObjects.Sprite) {
-    if (animation.key === AnimationKeys.CharacterHurt) {
-        console.log("Animation complete: hurt");
-        this.charaterState = CharacterState.Idle;
-        this.play(AnimationKeys.CharacterIdle);
-        this.off('animationcomplete', this.handleAnimationComplete, this);
+  handleAnimationComplete(
+    animation: Phaser.Animations.Animation,
+    frame: Phaser.Animations.AnimationFrame,
+    gameObject: Phaser.GameObjects.Sprite
+  ) {
+    console.log(animation);
+    if (animation.key === AnimationKeys.CharacterAttack1) {
+      this.play(AnimationKeys.CharacterIdle);
+      this.off("animationcomplete", this.handleAnimationComplete, this);
     }
-}
+    if (animation.key === AnimationKeys.CharacterHurt) {
+      console.log("Animation complete: hurt");
+      this.play(AnimationKeys.CharacterIdle);
+      this.off("animationcomplete", this.handleAnimationComplete, this);
+    }
+    if (animation.key === AnimationKeys.CharacterDeath) {
+        this.play(AnimationKeys.CharacterIdle);
+        this.off("animationcomplete", this.handleAnimationComplete, this);
+    }
+  }
 
   private createAnimations() {
     this.anims.create({

@@ -22,7 +22,12 @@ export default class ChallengeFactory extends Phaser.GameObjects.Layer {
       new Challenge(scene, [1, 3, 1, 4, 4, 1, 2, 3, 3, 1]),
     ];
 
-    this.createChallenge();
+    this.initChallenge();
+  }
+
+  initChallenge() {
+    this.currentChallenge = this.challengeList.shift();
+    this.scene.add.existing(this.currentChallenge);
   }
 
   createChallenge() {
@@ -31,8 +36,11 @@ export default class ChallengeFactory extends Phaser.GameObjects.Layer {
       return;
     }
     this.currentChallenge = this.challengeList.shift();
-    this.scene.add.existing(this.currentChallenge);
+    setTimeout(() => {
+      this.scene.add.existing(this.currentChallenge);
+    }, 450);
   }
+
   emit(event: EventKeys, instruction: InstructionKeys) {
     this.currentChallenge.emit(event, instruction);
   }
@@ -41,17 +49,20 @@ export default class ChallengeFactory extends Phaser.GameObjects.Layer {
     switch (this.status) {
       case ChallengeFactoryStatus.Processing: {
         if (this.currentChallenge.size === 0) {
+          this.status = ChallengeFactoryStatus.Done;
           this.createChallenge();
         }
         break;
       }
       case ChallengeFactoryStatus.Done:
+        console.log("Done");
+        this.events.emit("attack");
+        this.status = ChallengeFactoryStatus.Processing;
         break;
 
       case ChallengeFactoryStatus.Empty: {
-        setTimeout(() => {
-          this.challengeList.push(new Challenge(this.scene, [4, 3, 1, 1, 2]));
-        }, 1000);
+        this.challengeList.push(new Challenge(this.scene, [4, 3, 1, 1, 2]));
+
         this.status = ChallengeFactoryStatus.Processing;
       }
       default:
