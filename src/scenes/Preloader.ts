@@ -32,6 +32,22 @@ export default class Preloader extends Phaser.Scene {
       "assets/environments/maps/treasure-hunters/Background/water-reflect.png",
       { frameWidth: 170, frameHeight: 10 }
     );
+    this.load.spritesheet(TextureKeys.UpButton, "assets/button/up.png", {
+      frameWidth: 34,
+      frameHeight: 34,
+    });
+    this.load.spritesheet(TextureKeys.DownButton, "assets/button/down.png", {
+      frameWidth: 34,
+      frameHeight: 34,
+    });
+    this.load.spritesheet(TextureKeys.LeftButton, "assets/button/left.png", {
+      frameWidth: 34,
+      frameHeight: 34,
+    });
+    this.load.spritesheet(TextureKeys.RightButton, "assets/button/right.png", {
+      frameWidth: 34,
+      frameHeight: 34,
+    });
 
     this.load.atlas(
       TextureKeys.Character,

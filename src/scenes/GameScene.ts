@@ -10,11 +10,21 @@ import {
 import WaterReflect from "../game/WaterReflect";
 import TextureKeys from "../const/TextureKeys";
 import Character from "../game/Character";
+import DownButton from "../game/Button/Down";
+import LeftButton from "../game/Button/Left";
+import Challenge from "../game/Challenge/Challenge";
+import { EventKeys } from "../const/EventKeys";
+import { InstructionKeys } from "../const/InstructionKeys";
+import ChallengeFactory from "../game/Challenge/ChallengeFactory";
 
 export default class GameScene extends Phaser.Scene {
   private bigClouds: Phaser.GameObjects.TileSprite;
   private ground: Phaser.Tilemaps.TilemapLayer;
+  private character: Character;
 
+  private instruction: number;
+
+  private challengeFactory: ChallengeFactory;
 
   constructor() {
     super(SceneKeys.Game);
@@ -34,13 +44,52 @@ export default class GameScene extends Phaser.Scene {
 
     new WaterReflect(this, width / 2, height / 2 + 63);
 
-    this.bigClouds = this.add.tileSprite(width / 2,height / 2 + 3, width, 101, TextureKeys.BigClouds);
-    
-    const character = new Character(this, width / 2, height / 2).idle();
+    this.bigClouds = this.add.tileSprite(
+      width / 2,
+      height / 2 + 3,
+      width,
+      101,
+      TextureKeys.BigClouds
+    );
+
+    this.challengeFactory = new ChallengeFactory(this);
+
+    this.character = new Character(this, width / 2, height / 2);
     this.cameras.main.setBounds(0, 0, width, height);
     this.physics.world.setBounds(0, 0, width, height);
-    this.physics.add.collider(character, this.ground);
+    this.physics.add.collider(this.character, this.ground);
 
+    this.handleInput();
+  }
+
+  setInstruction = (instruction: number) => {
+    this.instruction = instruction;
+  };
+
+  private handleInput() {
+    this.input.keyboard.on("keydown-UP", this.handleUp, this); // instruction = 1
+
+    this.input.keyboard.on("keydown-DOWN", this.handleDown, this); // instruction = 3
+
+    this.input.keyboard.on("keydown-LEFT", this.handleLeft, this); // instruction = 4
+
+    this.input.keyboard.on("keydown-RIGHT", this.handleRight, this); // instuction = 2
+  }
+
+  private handleUp() {
+    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Up);
+  }
+
+  private handleDown() {
+    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Down);
+  }
+
+  private handleLeft() {
+    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Left);
+  }
+
+  private handleRight() {
+    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Right);
   }
 
   private loadMap(map: Phaser.Tilemaps.Tilemap, types: TileLayerKeysType[]) {
@@ -65,7 +114,11 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  update(time: number, delta: number): void {
+  setCloudParallax() {
     this.bigClouds.tilePositionX += 0.5;
+  }
+  update(time: number, delta: number): void {
+    this.setCloudParallax();
+    this.challengeFactory.preUpdate();
   }
 }
