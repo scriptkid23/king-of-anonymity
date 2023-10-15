@@ -1,7 +1,7 @@
 import * as Phaser from "phaser";
 import SceneKeys from "../const/SceneKeys";
 import { TileMapKeys } from "../const/TileMapKeys";
-import { TileKeys } from "../const/TileKeys";
+
 import {
   TileLayerKeys,
   TileLayerKeysType,
@@ -9,11 +9,7 @@ import {
 } from "../const/TileLayerKeys";
 import WaterReflect from "../game/WaterReflect";
 import TextureKeys from "../const/TextureKeys";
-import DownButton from "../game/Button/Down";
-import LeftButton from "../game/Button/Left";
-import Challenge from "../game/Challenge/Challenge";
-import { EventKeys } from "../const/EventKeys";
-import { InstructionKeys } from "../const/InstructionKeys";
+
 import ChallengeFactory from "../game/Challenge/ChallengeFactory";
 import Character from "../game/Character/Character";
 import Cascader from "../game/Character/Cascader";
@@ -60,11 +56,11 @@ export default class GameScene extends Phaser.Scene {
       "left"
     ).addChallengeFactory(this.challengeFactory);
 
-    let cascader = new Character(
+    let cascader = new Cascader(
       this,
       width / 2 + 100,
       height / 2 + 80,
-      "right",
+    
     ).setFlipX(true);
 
     this.cameras.main.setBounds(0, 0, width, height);

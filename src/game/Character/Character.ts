@@ -25,8 +25,6 @@ export default class Character extends Phaser.GameObjects.Sprite {
 
   private challengeFactory: ChallengeFactory;
 
-
-
   constructor(scene: Phaser.Scene, x: number, y: number, id: string) {
     super(scene, x, y, TextureKeys.Character);
 
@@ -70,25 +68,12 @@ export default class Character extends Phaser.GameObjects.Sprite {
       }, 300);
     });
 
-    this.handleInput();
-
-
+    this.cursors = this.scene.input.keyboard.createCursorKeys();
   }
 
   addChallengeFactory(challengeFactory: ChallengeFactory) {
     this.challengeFactory = challengeFactory;
     return this;
-
-  }
-
-  private handleInput() {
-    this.scene.input.keyboard.on("keydown-UP", this.handleUp, this); // instruction = 1
-
-    this.scene.input.keyboard.on("keydown-DOWN", this.handleDown, this); // instruction = 3
-
-    this.scene.input.keyboard.on("keydown-LEFT", this.handleLeft, this); // instruction = 4
-
-    this.scene.input.keyboard.on("keydown-RIGHT", this.handleRight, this); // instuction = 2
   }
 
   private handleUp() {
@@ -106,8 +91,6 @@ export default class Character extends Phaser.GameObjects.Sprite {
   private handleRight() {
     this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Right);
   }
-
-
 
   attack() {
     this.play(AnimationKeys.CharacterAttack1);
@@ -136,11 +119,21 @@ export default class Character extends Phaser.GameObjects.Sprite {
   protected preUpdate(time: number, delta: number): void {
     super.preUpdate(time, delta);
 
+    if (Phaser.Input.Keyboard.JustDown(this.cursors.up)) {
+      this.handleUp();
+    } else if (Phaser.Input.Keyboard.JustDown(this.cursors.down)) {
+      this.handleDown();
+    } else if (Phaser.Input.Keyboard.JustDown(this.cursors.left)) {
+      this.handleLeft();
+    } else if (Phaser.Input.Keyboard.JustDown(this.cursors.right)) {
+      this.handleRight();
+    }
+
     switch (this.charaterState) {
       case CharacterState.Hurt: {
-          this.play(AnimationKeys.CharacterHurt);
-          this.charaterState = CharacterState.Idle;
-          this.on("animationcomplete", this.handleAnimationComplete, this);
+        this.play(AnimationKeys.CharacterHurt);
+        this.charaterState = CharacterState.Idle;
+        this.on("animationcomplete", this.handleAnimationComplete, this);
 
         break;
       }
