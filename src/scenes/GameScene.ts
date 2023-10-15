@@ -23,8 +23,6 @@ export default class GameScene extends Phaser.Scene {
   private ground: Phaser.Tilemaps.TilemapLayer;
   private character: Character;
 
-  private instruction: number;
-
   private challengeFactory: ChallengeFactory;
 
   constructor() {
@@ -53,63 +51,26 @@ export default class GameScene extends Phaser.Scene {
       TextureKeys.BigClouds
     );
 
-    this.challengeFactory = new ChallengeFactory(this);
+    this.challengeFactory = new ChallengeFactory(this, "left");
 
-    this.character = new Character(this, width / 2 - 100, height / 2 + 80);
+    this.character = new Character(
+      this,
+      width / 2 - 100,
+      height / 2 + 80,
+      "left"
+    ).addChallengeFactory(this.challengeFactory);
 
-    let cascader = new Cascader(
+    let cascader = new Character(
       this,
       width / 2 + 100,
-      height / 2 + 80
+      height / 2 + 80,
+      "right",
     ).setFlipX(true);
+
     this.cameras.main.setBounds(0, 0, width, height);
     this.physics.world.setBounds(0, 0, width, height);
     this.physics.add.collider(this.character, this.ground);
     this.physics.add.collider(cascader, this.ground);
-    this.physics.world.on("collide", this.handleCollision, this);
-    this.handleInput();
-  }
-  handleCollision(obj1, obj2) {
-    console.log(obj1, obj2);
-    const label1 = obj1.getData("label");
-    const label2 = obj2.getData("label");
-
-    if (label1 === "playerBody") {
-      // Handle collision when obj1 collides with obj2
-      console.log("Player collided with", label2);
-    } else if (label2 === "playerBody") {
-      // Handle collision when obj2 collides with obj1
-      console.log("Something collided with player");
-    }
-  }
-  setInstruction = (instruction: number) => {
-    this.instruction = instruction;
-  };
-
-  private handleInput() {
-    this.input.keyboard.on("keydown-UP", this.handleUp, this); // instruction = 1
-
-    this.input.keyboard.on("keydown-DOWN", this.handleDown, this); // instruction = 3
-
-    this.input.keyboard.on("keydown-LEFT", this.handleLeft, this); // instruction = 4
-
-    this.input.keyboard.on("keydown-RIGHT", this.handleRight, this); // instuction = 2
-  }
-
-  private handleUp() {
-    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Up);
-  }
-
-  private handleDown() {
-    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Down);
-  }
-
-  private handleLeft() {
-    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Left);
-  }
-
-  private handleRight() {
-    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Right);
   }
 
   private loadMap(map: Phaser.Tilemaps.Tilemap, types: TileLayerKeysType[]) {

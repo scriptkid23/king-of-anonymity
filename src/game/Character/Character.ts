@@ -3,6 +3,10 @@ import { BodyType } from "matter";
 import TextureKeys from "../../const/TextureKeys";
 import AnimationKeys from "../../const/AnimationKeys";
 import Skill from "./Skill";
+import Challenge from "../Challenge/Challenge";
+import ChallengeFactory from "../Challenge/ChallengeFactory";
+import { EventKeys } from "../../const/EventKeys";
+import { InstructionKeys } from "../../const/InstructionKeys";
 
 export enum CharacterState {
   Idle,
@@ -19,9 +23,11 @@ export default class Character extends Phaser.GameObjects.Sprite {
 
   private cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 
-  private skill: Skill;
+  private challengeFactory: ChallengeFactory;
 
-  constructor(scene: Phaser.Scene, x: number, y: number) {
+
+
+  constructor(scene: Phaser.Scene, x: number, y: number, id: string) {
     super(scene, x, y, TextureKeys.Character);
 
     this.createAnimations();
@@ -32,7 +38,11 @@ export default class Character extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.existing(this);
     scene.add.existing(this);
 
-    this.scene.events.on("attack", () => {
+    this.scene.events.on(`hurt-${id}`, () => {
+      this.charaterState = CharacterState.Hurt;
+    });
+
+    this.scene.events.on(`attack-${id}`, () => {
       this.charaterState = CharacterState.Attack;
       setTimeout(() => {
         const skill = new Skill(scene, this.x + 23, this.y + 5);
@@ -50,7 +60,7 @@ export default class Character extends Phaser.GameObjects.Sprite {
           },
           onComplete: () => {
             skill.play(AnimationKeys.SkillEnd);
-            this.scene.events.emit("hurt", "data");
+            this.scene.events.emit(`hurt-right`, "data");
 
             skill.on("animationcomplete", () => {
               skill.destroy();
@@ -59,7 +69,45 @@ export default class Character extends Phaser.GameObjects.Sprite {
         });
       }, 300);
     });
+
+    this.handleInput();
+
+
   }
+
+  addChallengeFactory(challengeFactory: ChallengeFactory) {
+    this.challengeFactory = challengeFactory;
+    return this;
+
+  }
+
+  private handleInput() {
+    this.scene.input.keyboard.on("keydown-UP", this.handleUp, this); // instruction = 1
+
+    this.scene.input.keyboard.on("keydown-DOWN", this.handleDown, this); // instruction = 3
+
+    this.scene.input.keyboard.on("keydown-LEFT", this.handleLeft, this); // instruction = 4
+
+    this.scene.input.keyboard.on("keydown-RIGHT", this.handleRight, this); // instuction = 2
+  }
+
+  private handleUp() {
+    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Up);
+  }
+
+  private handleDown() {
+    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Down);
+  }
+
+  private handleLeft() {
+    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Left);
+  }
+
+  private handleRight() {
+    this.challengeFactory.emit(EventKeys.Press, InstructionKeys.Right);
+  }
+
+
 
   attack() {
     this.play(AnimationKeys.CharacterAttack1);
@@ -87,24 +135,16 @@ export default class Character extends Phaser.GameObjects.Sprite {
 
   protected preUpdate(time: number, delta: number): void {
     super.preUpdate(time, delta);
-    const body = this.body as Phaser.Physics.Arcade.Body;
 
-    if (this.cursors.right.isDown) {
-      // Xử lý khi phím mũi tên lên được nhấn
-    }
     switch (this.charaterState) {
       case CharacterState.Hurt: {
-        console.log(this.charaterState, this.isHurt);
-        if (this.isHurt) {
           this.play(AnimationKeys.CharacterHurt);
-          this.isHurt = false;
+          this.charaterState = CharacterState.Idle;
           this.on("animationcomplete", this.handleAnimationComplete, this);
-        }
 
         break;
       }
       case CharacterState.Attack: {
-        console.log("Attack");
         this.play(AnimationKeys.CharacterAttack1);
         this.charaterState = CharacterState.Idle;
         this.on("animationcomplete", this.handleAnimationComplete, this);
@@ -123,7 +163,6 @@ export default class Character extends Phaser.GameObjects.Sprite {
       this.off("animationcomplete", this.handleAnimationComplete, this);
     }
     if (animation.key === AnimationKeys.CharacterHurt) {
-      console.log("Animation complete: hurt");
       this.play(AnimationKeys.CharacterIdle);
       this.off("animationcomplete", this.handleAnimationComplete, this);
     }

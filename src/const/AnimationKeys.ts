@@ -10,6 +10,9 @@ enum AnimationKeys {
   DestroyButton = "destroy-button",
   SkillStart = "skill-start",
   SkillEnd = "skill-end",
+
+  UntilStart = "until-start",
+  UntilEnd = "until-end",
 }
 
 export default AnimationKeys;

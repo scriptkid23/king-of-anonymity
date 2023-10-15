@@ -7,6 +7,7 @@ enum TextureKeys {
   LeftButton = "Left Button",
   RightButton = "Right Button",
   Skill = "Skill",
+  Until = "Until",
 }
 
 export default TextureKeys;

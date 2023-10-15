@@ -13,10 +13,12 @@ export default class ChallengeFactory extends Phaser.GameObjects.Layer {
   private status: ChallengeFactoryStatus = ChallengeFactoryStatus.Processing;
 
   private currentChallenge: Challenge;
+  private id: string;
 
-  constructor(scene: Phaser.Scene) {
+  constructor(scene: Phaser.Scene, id: string) {
     super(scene);
-
+    
+    this.id = id;
     this.challengeList = [
       new Challenge(scene, [1, 1, 3, 1, 2]),
       new Challenge(scene, [1, 3, 1, 4, 4, 1, 2, 3, 3, 1]),
@@ -56,7 +58,7 @@ export default class ChallengeFactory extends Phaser.GameObjects.Layer {
       }
       case ChallengeFactoryStatus.Done:
         console.log("Done");
-        this.events.emit("attack");
+        this.events.emit(`attack-${this.id}`);
         this.status = ChallengeFactoryStatus.Processing;
         break;
 
